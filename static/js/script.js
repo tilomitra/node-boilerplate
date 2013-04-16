@@ -1,15 +1,17 @@
-/* Author: YOUR NAME HERE
+/* Author: Tilo Mitra
 */
 
-$(document).ready(function() {   
+YUI().use('node', function (Y) {
+    var socket      = io.connect(),
+        sender      = Y.one("#sender"),
+        receiver    = Y.one("#receiver");
 
-  var socket = io.connect();
+    sender.on('click', function (e) {
+        socket.emit('message', 'Message Sent on ' + new Date());
+    });
 
-  $('#sender').bind('click', function() {
-   socket.emit('message', 'Message Sent on ' + new Date());     
-  });
+    socket.on('server_message', function(data){
+     receiver.append('<li>' + data + '</li>');  
+    });
 
-  socket.on('server_message', function(data){
-   $('#receiver').append('<li>' + data + '</li>');  
-  });
 });
