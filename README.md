@@ -9,7 +9,7 @@ Node Boilerplate has 4 goals:
 3. To make it easy to install additional modules within the project directory
 4. To enable easy upgrade or freezing of project dependencies  
 
-Differences between this fork and the original
+Differences between this fork and the [original](https://github.com/robrighter/node-boilerplate)
 ----------------------------------------------
 
 Currently, the differences are:
