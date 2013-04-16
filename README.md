@@ -9,27 +9,23 @@ Node Boilerplate has 4 goals:
 3. To make it easy to install additional modules within the project directory
 4. To enable easy upgrade or freezing of project dependencies  
 
+Differences between this fork and the original
+----------------------------------------------
 
-To start a project:
-		
-		git clone git://github.com/robrighter/node-boilerplate.git mynewproject
-		cd mynewproject
-		./bin/initproject.sh
-This will copy down all of the boilerplate files organize them appropriately and init a fresh new git repository within which you can build your next big thing.
+Currently, the differences are:
 
+* Uses [express3-handlebars](https://github.com/ericf/express3-handlebars) instead of jade
+* Uses [Express v3.x](https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x) as opposed to 2.x
+* Uses [YUI](http://yuilibrary.com) instead of jQuery on the client
 
 
 To run the boilerplate template app:
 
 		node server.js
 
-Go to http://0.0.0.0:8081 and click on the send message link to see socket.io in action.
+Go to http:/localhost:8000 and click on the send message link to see socket.io in action.
 
 
-
-To add additional modules:
-
-You can git clone any other modules into the lib folder. Any modules cloned into the git folder can be required as global modules ie.. require('somemodule').
-
-**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the modules in the lib directory and the initproject.sh script will initialize projects with your new set of modules.** 
-
+LICENSE
+-------
+This software is free to use under the Yahoo! Inc. BSD license. See the LICENSE file for license text and copyright information.
