@@ -14,16 +14,15 @@ Differences between this fork and the [original](https://github.com/robrighter/n
 
 Currently, the differences are:
 
-* Uses [express3-handlebars](https://github.com/ericf/express3-handlebars) instead of jade
 * Uses [Express v3.x](https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x) as opposed to 2.x
+* Uses [express3-handlebars](https://github.com/ericf/express3-handlebars) instead of jade
 * Uses [YUI](http://yuilibrary.com) instead of jQuery on the client
-
 
 To run the boilerplate template app:
 
 		node server.js
 
-Go to http:/localhost:8000 and click on the send message link to see socket.io in action.
+Go to [http://localhost:8000](http://localhost:8000) and click on the send message link to see socket.io in action.
 
 
 LICENSE
