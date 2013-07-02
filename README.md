@@ -20,9 +20,18 @@ Currently, the differences are:
 
 To run the boilerplate template app:
 
-		node server.js
+```shell
+    $ git clone github.com/tilomitra/node-boilerplate/ <your-app-folder-name>
+    $ npm install
+    $ npm start
+```
 
 Go to [http://localhost:8000](http://localhost:8000) and click on the send message link to see socket.io in action.
+
+### But I don't need socket.io!
+
+If you don't need Socket.io, then just get rid of the socket.io calls from `server.js`, remove the client-side
+code in `script.js`, and the socket.io client-side library that exists in `layouts/main.handlebars`.
 
 
 LICENSE
