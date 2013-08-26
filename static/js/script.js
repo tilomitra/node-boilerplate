@@ -3,6 +3,7 @@
 */
 
 YUI().use('node', function (Y) {
+	//Remove all socket related code if you don't want socket.io
     var socket      = io.connect(),
         sender      = Y.one("#sender"),
         receiver    = Y.one("#receiver");
