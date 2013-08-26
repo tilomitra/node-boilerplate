@@ -6,7 +6,6 @@
   "dependencies": {
     "connect": "1.8.5",
     "express": "3.x",
-    "mongoose": "2.4.8",
     "socket.io": "0.8.x",
     "express3-handlebars": "0.4.1",
     "express-state": "1.x"
