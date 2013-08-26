@@ -4,16 +4,27 @@ var http    = require('http'),
     connect = require('connect'),
     express = require('express'),
     exphbs  = require('express3-handlebars'),
+    state   = require('express-state'),
     app     = express(),
     port    = (process.env.PORT || 8000),
     server  = app.listen(port, 'localhost'),
-    io = require('socket.io').listen(server);
 
-//server.listen(8000);
+    //remove this if you don't need socket.io
+    io = require('socket.io').listen(server); 
+
 //Setup Express App
+state.extend(app);
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.enable('view cache');
+app.enable('strict routing');
+
+//Change "ProjectName" to whatever your application's name is. 
+app.set('state namespace', 'ProjectName');
+
+//Create an empty Data object and expose it to the client. This
+//will be available on the client under ProjectName.Data
+app.expose({}, 'Data'); 
 
 app.configure(function(){
     app.set('views', __dirname + '/views');
@@ -35,9 +46,8 @@ app.configure(function(){
     })
 });
 
-//app.listen(port, 'localhost');
-
 //Setup Socket.IO
+//You can remove this whole chunk if you don't want socket.io
 io.sockets.on('connection', function(socket){
   console.log('Client Connected');
   socket.on('message', function(data){
