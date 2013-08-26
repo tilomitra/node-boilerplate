@@ -4,11 +4,10 @@
   "author": "Tilo Mitra <tilomitra@gmail.com>",
   "version": "1.0.0",
   "dependencies": {
-    "connect": "1.8.5",
     "express": "3.x",
     "socket.io": "0.8.x",
     "express3-handlebars": "0.4.1",
-    "express-state": "1.x"
+    "express-state": "~1.0.0"
   },
   "devDependencies": {
     "vows": "0.5.x",
