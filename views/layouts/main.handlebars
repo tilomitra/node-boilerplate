@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{{title}}</title>
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.css" />
     <link href="/css/style.css" media="all" rel="stylesheet" /></head>
 
 <body lang="en">
 
-    <header>
-    </header>
 
-    <div id="canvas">
+    <div class="container">
         {{{body}}}
     </div>
 
@@ -20,6 +20,13 @@
         // data exposed by express-state
         {{{state}}}
     </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.js"></script>
+
+    <script src="http://cdn.jsdelivr.net/parse/1.2.9/parse.min.js"></script>
     <script src="/js/script.js"></script>
 </body>
 

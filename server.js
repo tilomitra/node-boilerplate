@@ -6,6 +6,7 @@ var http    = require('http'),
     state   = require('express-state'),
     app     = express(),
     port    = (process.env.PORT || 8000),
+    routes  = require('./routes'),
     server  = app.listen(port, 'localhost');
 
 //Setup Express App
@@ -16,12 +17,7 @@ app.enable('view cache');
 app.enable('strict routing');
 
 //Change "ProjectName" to whatever your application's name is.
-app.set('state namespace', 'ProjectName');
-
-//Create an empty Data object and expose it to the client. This
-//will be available on the client under ProjectName.Data
-app.expose({}, 'Data');
-
+app.set('state namespace', 'Place');
 
 app.set('views', __dirname + '/views');
 
@@ -49,9 +45,7 @@ app.use(function(err, req, res, next){
 ///////////////////////////////////////////
 
 /////// ADD ALL YOUR ROUTES HERE  /////////
-app.get('/', function (req, res, next) {
-    res.render('home');
-});
+app.get('/', routes.home);
 
 //A Route for Creating a 500 Error (Useful to keep around)
 app.get('/500', function(req, res){

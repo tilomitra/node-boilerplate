@@ -1,0 +1,16 @@
+.has-photo {
+  background: rgb(171, 252, 165) !important;
+  color: rgb(18, 110, 18) !important;
+  border-color: rgb(171, 252, 165) !important;
+}
+
+.select {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+#parse-btn {
+  margin-top: 20px;
+}

@@ -1,8 +1,81 @@
-<h1>Example App: Home</h1>
+<h1>Places <small>Image Service</small></h1>
+<div class="row">
 
-<div>
-    <a id="sender">Send a Message</a>
-    <ul id="receiver">
+    <div class="city-list col-md-4">
+        <ul class="list-group">
+            {{#each cities}}
+                <li class="city list-group-item {{#if this.photos}} has-photo {{/if}}" data-id="{{this.objectId}}">{{this.name}}</li>
+            {{/each}}
+        </ul>
+    </div>
 
-    </ul>
+    <div class="col-md-8">
+        <div class="well">
+            Select a city from the right first.
+        </div>
+
+        <div class="has-photo-alert alert alert-warning hidden">
+            <p>
+                <strong>Warning: </strong> This city already has a photo associated with it. Adding a photo here will overwrite the existing photo.
+            </p>
+        </div>
+
+        <div class="select hidden">
+        <h3 id="city-name-head"></h3>
+            <form class="form-horizontal" role="form">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-lg" id="flickr-input">
+                            <span class="input-group-btn">
+                            <button class="btn btn-success btn-lg" id="flickr-btn" type="button">Get from Flickr</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="flickr-panel-container"></div>
+    </div>
 </div>
+
+
+
+
+<script type="text/x-handlebars-template" id="flickr-panel-template">
+
+    <div class="flickr-panel" data-photo="\{{id}}">
+        <h4>Choose a size</h4>
+        \{{#unless photo.sizes.candownload}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    <p><strong>Warning:</strong> This photo doesn't have the necessary rights for downloading.</p>
+                </div>
+            </div>
+        </div>
+        \{{/unless}}
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="\{{photo.sizes.size.1.source}}" class="img-responsive" width="\{{photo.sizes.size.1.width}}">
+            </div>
+
+            <div class="col-md-8">
+                <div class="row">
+                \{{#each photo.sizes.size}}
+                    <div class="radio col-md-4">
+                        <label>
+                            <input class="size-radio" type="radio" name="optionsRadios" id="options-{{this.label}}" value="\{{this.url}}">
+                            \{{this.height}} x \{{this.width}}
+                        </label>
+                    </div>
+                \{{/each}}
+                </div>
+            </div>
+        </div>
+        <button id="parse-btn" class="btn btn-primary btn-lg btn-block">Save to Parse</button>
+    </div>
+</script>
