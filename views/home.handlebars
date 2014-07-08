@@ -2,7 +2,7 @@
 <div class="row">
 
     <div class="city-list col-md-4">
-        <ul class="list-group">
+        <ul class="city-list-group list-group">
             {{#each cities}}
                 <li class="city list-group-item {{#if this.photos}} has-photo {{/if}}" data-id="{{this.objectId}}">{{this.name}}</li>
             {{/each}}
@@ -27,7 +27,7 @@
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input type="text" class="form-control input-lg" id="flickr-input">
+                            <input type="text" class="form-control input-lg" id="flickr-input" placeholder="Enter Flickr URL">
                             <span class="input-group-btn">
                             <button class="btn btn-success btn-lg" id="flickr-btn" type="button">Get from Flickr</button>
                             </span>

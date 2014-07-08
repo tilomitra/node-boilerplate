@@ -8,7 +8,10 @@
     "express3-handlebars": "latest",
     "express-state": "latest",
     "parse": "~1.2.17",
-    "request": "~2.36.0"
+    "request": "~2.36.0",
+    "ypromise": "~0.2.3",
+    "q": "~1.0.1",
+    "q-io": "~1.11.2"
   },
   "devDependencies": {
     "vows": "0.5.x",

@@ -16,7 +16,7 @@ function renderFlickrPanel (data, photoId) {
         html     = template({photo: data, id: photoId}),
         panelContainer = $('.flickr-panel-container');
 
-    panelContainer.empty().html(html);
+    panelContainer.html(html);
 }
 
 // Clicking on the city list.
@@ -29,6 +29,9 @@ $('.city-list').delegate( '.city', 'click', function() {
     //update text on right hand side
     $('.select').removeClass('hidden');
     cityHead.text($(this).text());
+
+    //empty the panelContainer
+    $('.flickr-panel-container').empty();
 
     if ($(this).hasClass('has-photo')) {
         $('.has-photo-alert').removeClass('hidden');

@@ -4,6 +4,11 @@
   border-color: rgb(171, 252, 165) !important;
 }
 
+.city-list-group {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 .select {
   padding-bottom: 20px;
   margin-bottom: 20px;
