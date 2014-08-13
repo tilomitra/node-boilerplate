@@ -1,6 +1,6 @@
 {
-  "name": "YOUR-PROJECT-NAME-HERE",
-  "description": "YOUR PROJECT DESCRIPTION HERE",
+  "name": "Node-Boilerplate",
+  "description": "A template to help build Node apps with Handlebars",
   "author": "Tilo Mitra <tilomitra@gmail.com>",
   "version": "2.1.0",
   "dependencies": {
