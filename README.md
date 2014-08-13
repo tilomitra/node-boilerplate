@@ -38,5 +38,12 @@ To install and run the Node Boilerplate template app:
 
 Then, go to [http://localhost:8000](http://localhost:8000).
 
+## Other Node.js Starter Apps
+This project is not suitable for everyone. Notably, Node Boilerplate does not come with a database, user authentication system, OAuth login support, or build tasks. I want to keep Node Boilerplate simple. However, there are some great open source projects available if you need these features. 
+
+* [Hackathon Starter](https://github.com/sahat/hackathon-starter)
+* [Nodember](https://github.com/mgenev/nodember)
+
+
 ## LICENSE
 This software is free to use under the Yahoo! Inc. BSD license. See the LICENSE file for license text and copyright information.
