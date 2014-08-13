@@ -4,23 +4,43 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{{title}}</title>
+    
+    {{addRemoteCSS "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"}}
+    {{addLocalCSS "/css/app.css"}}
 
-    <link href="/css/style.css" media="all" rel="stylesheet" /></head>
+    {{#remoteCSS}}
+    <link rel="stylesheet" href="{{{.}}}">
+    {{/remoteCSS}}
+
+    {{#localCSS}}
+      {{#if this.oldIE}}
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="{{{this.oldIE}}}">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="{{{this.path}}}">
+        <!--<![endif]-->
+      {{else}}
+        <link rel="stylesheet" href="{{{this.path}}}">
+      {{/if}}
+    {{/localCSS}}
 
 <body lang="en">
 
-    <header>
-    </header>
-
-    <div id="canvas">
+    <div class="container">
         {{{body}}}
     </div>
-
+    
     <script>
         // data exposed by express-state
         {{{state}}}
     </script>
-    <script src="/js/script.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {{#localJS}}
+        <script src="{{{.}}}"></script>
+    {{/localJS}}
 </body>
 
 </html>
