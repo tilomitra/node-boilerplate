@@ -1,19 +1,24 @@
 //setup Dependencies
-var http    = require('http'),
-    fs      = require('fs'),
-    express = require('express'),
-    exphbs  = require('express3-handlebars'),
-    state   = require('express-state'),
-    app     = express(),
-    port    = (process.env.PORT || 8000),
-    server  = app.listen(port, 'localhost');
+var express  = require('express'),
+bodyParser   = require('body-parser'),
+cookieParser = require('cookie-parser'),
+session      = require('express-session'),
+state        = require('express-state'),
+hbs          = require('./lib/exphbs'),
+routes       = require('./routes'),
+middleware   = require('./middleware'),
+config       = require('./config'),
+app          = express(),
+port         = (process.env.PORT || 8000),
+server       = app.listen(port, 'localhost'),
+router;
 
 //Setup Express App
 state.extend(app);
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+app.engine(hbs.extname, hbs.engine);
+app.set('view engine', hbs.extname);
 app.enable('view cache');
-app.enable('strict routing');
+//app.enable('strict routing');
 
 //Change "ProjectName" to whatever your application's name is.
 app.set('state namespace', 'ProjectName');
@@ -22,26 +27,26 @@ app.set('state namespace', 'ProjectName');
 //will be available on the client under ProjectName.Data
 app.expose({}, 'Data');
 
+if (app.get('env') === 'development') {
+    app.use(middleware.logger('tiny'));
+}
 
-app.set('views', __dirname + '/views');
+app.set('views', config.dirs.views);
 
-app.use(express.bodyParser());
-app.use(express.cookieParser());
-app.use(express.session({ secret: "shhhhhhhhh!"}));
-app.use(express.static(__dirname + '/public'));
-app.use(app.router);
-
-app.use(function(err, req, res, next){
-  // if an error occurs Connect will pass it down
-  // through these "error-handling" middleware
-  // allowing you to respond however you like
-  if (err instanceof NotFound) {
-      res.render('404');
-  }
-  else {
-      res.render('500');
-  }
+router = express.Router({
+    caseSensitive: app.get('case sensitive routing'),
+    strict       : app.get('strict routing')
 });
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+app.use(cookieParser());
+app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
+app.use(express.static(config.dirs.pub));
+app.use(router);
 
 
 ///////////////////////////////////////////
@@ -49,17 +54,13 @@ app.use(function(err, req, res, next){
 ///////////////////////////////////////////
 
 /////// ADD ALL YOUR ROUTES HERE  /////////
-app.get('/', function (req, res, next) {
-    res.render('home');
-});
+router.get('/', routes.render('home'));
 
 //A Route for Creating a 500 Error (Useful to keep around)
-app.get('/500', function(req, res){
-    throw new Error('This is a 500 Error');
-});
+router.get('/500', routes.render);
 
 //The 404 Route (ALWAYS Keep this as the last route)
-app.get('/*', function(req, res){
+router.get('/*', function(req, res){
     throw new NotFound;
 });
 
