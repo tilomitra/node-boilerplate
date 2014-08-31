@@ -8,6 +8,7 @@ module.exports = {
         bower   : path.resolve('bower_components/'),
         views   : path.resolve('views/'),
         layouts : path.resolve('views/layouts/'),
-        partials: path.resolve('views/partials/')
+        partials: path.resolve('views/partials/'),
+        shared  : path.resolve('shared/templates/')
     }
 };
